@@ -1,0 +1,80 @@
+﻿@{
+    ViewData["Title"] = "RegisterInfomation";
+}
+<body>
+    <div class="row" style="margin-top: 20px;">
+        <div class="media col-12 col-sm-12 col-md-12 border" style="margin-left: 10px; margin-right: 10px;">
+            <img class="mr-3 rounded order-0 col-4 col-sm-4 col-md-4"
+                 src="https://vapa.vn/wp-content/uploads/2022/12/anh-3d-thien-nhien-010.jpg">
+            <div class="media-body col-8 col-sm-8 col-md-8" style="margin-top: 40px;">
+                <div class="row">
+                    <div class="mt-0 text-info font-italic col-6 col-sm-6 col-md-6 border-bottom" style="font-size: 40px;">QUẢN LÝ TÀI KHOẢN</div>
+                    <div class="mt-0 text-info font-italic col-6 col-sm-6 col-md-6 d-flex align-items-center border-bottom"
+                         style="font-size: 20px; margin-bottom: 100px;">
+                        LARS TRAVEL
+                    </div>
+                    <form asp-controller="Register" asp-action="SaveRegister" class="col-12 col-sm-12 col-md-12" onsubmit="SaveRegister()">
+                        <div class="row">
+                            <div class="col-6 col-sm-6 col-md-6">
+                                <label for="" class="font-italic text-info col-12">Họ và tên</label>
+                                <input type="text" class="rounded border-info text-info col-12" id="Name" style="height:60px;">
+                            </div>
+                            <div class="col-6 col-sm-6 col-md-6">
+                                <label for="" class="font-italic text-info col-12">Ngày sinh</label>
+                                <input type="datetime-local" class="rounded border-info text-info col-12" id="DateOfBirth" style="height:60px;">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6 col-sm-6 col-md-6">
+                                <label for="" class="font-italic text-info col-12">Giới tính</label>
+                                <select name="" id="Sex" class="rounded border-info text-info col-12" style="height:60px;">
+                                    <option value="Nam">Nam</option>
+                                    <option value="Nữ">Nữ</option>
+                                    <option value="Khác">Khác</option>
+                                </select>
+                            </div>
+                            <div class="col-6 col-sm-6 col-md-6">
+                                <label for="" class="font-italic text-info col-12">Email</label>
+                                <input type="text" id="Email" class="rounded border-info text-info col-12" style="height:60px;" value="@ViewData["RegisterEmail"]" disabled>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6 col-sm-6 col-md-6">
+                                <label for="" class="font-italic text-info col-12">Số điện thoại</label>
+                                <input type="text" id="PhoneNumber" class="rounded border-info text-info col-12" style="height:60px;">
+                            </div>
+                            <div class="col-6 col-sm-6 col-md-6">
+                                <label for="" class="font-italic text-info col-12">Địa chỉ</label>
+                                <input type="text" id="Address" class="rounded border-info text-info col-12" style="height:60px;">
+                            </div>
+                        </div>
+                        <div class="row" style="margin-top: 40px;">
+                            <div class="col-3 col-sm-3 col-md-3"></div>
+                            <button type="submit" style="height:60px;"
+                                    class="btn-outline-info rounded col-6 col-sm-6 col-md-6 justify-content-center align-items-center">
+                                Đăng ký thông tin
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    debugger
+    function SaveRegister(){
+        if (ValidateRequired($("#Name").val())) return false;
+        if (ValidateRequired($("#Sex").val())) return false;
+        if (ValidateRequired($("#Email").val())) return false;
+        if (ValidateRequired($("#DateOfBirth").val())) return false;
+        if (ValidateRequired($("#PhoneNumber").val())) return false;
+        if (ValidateRequired($("#Address").val())) return false;
+        return true;
+    }
+    function ValidateRequired(value){
+        if(value == null){
+            alert("Yêu cầu nhập đầy đủ thông tin");
+        }
+    }
+</script>

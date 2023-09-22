@@ -53,7 +53,31 @@
                         </div>
                 </div>
                 <div class="row" style="margin-top: 50px;">
-                    <button style="height:60px; width: 50%;" class="btn-outline-info rounded col-10 col-sm-10 col-md-10">Đặt lịch</button>
+                    <button style="height:60px; width: 50%;" class="btn-outline-info rounded col-10 col-sm-10 col-md-10" data-toggle="modal" data-target="#confirmBooking">Đặt lịch</button>
+                </div>
+                <div id="confirmBooking" class="modal fade" tabindex="-1" role="dialog">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title text-info">Xác nhận đặt Tour</h4>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <label for="confirmDate" class="text-info font-italic">Thời gian:</label>
+                                <input type="text" class="col-12 rounded border-info text-info" style="height: 40px; margin-bottom: 20px;" id="confirmDate" value="2023/12/12" disabled>
+                                <label for="confirmMemberPackage" class="text-info font-italic">Gói thành viên:</label>
+                                <input type="text" class="col-12 rounded border-info text-info" style="height: 40px; margin-bottom: 20px;" id="confirmMemberPackage" value="Gói Cặp đôi" disabled>
+                                <label for="confirmHotel" class="text-info font-italic">Khách sạn:</label>
+                                <input type="text" class="col-12 rounded border-info text-info" style="height: 40px; margin-bottom: 20px;" id="confirmHotel" value="Khách sạn Hải Long" disabled>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Hủy bỏ</button>
+                                <button type="button" class="btn btn-primary" onclick="Save()">Xác nhận</button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -100,6 +124,70 @@
                     <h5 class="card-subtitle">Ảnh 4K - Đây là sử dụng tiêu đề phụ</h5>
                     <p class="card-text">Đây là phần nội dung của Card - Thiết lập màu chữ cho card</p>
                     <a href="#" class="btn btn-primary">Go somewhere</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row" style="margin-top: 50px;">
+        <div class="text-center col-12 col-sm-12 col-md-12 text-info font-italic font-weight-bold" style="font-size: 20px; margin-bottom: 20px;">CÁC BÌNH LUẬN NỔI BẬT</div>
+        <ul class="list-unstyled col-12 col-sm-12 col-md-12">
+            <li class="media" style="margin-left: 40px; margin-bottom: 20px; width: 90%;">
+                <img class="mx-3 rounded order-0" src="https://vapa.vn/wp-content/uploads/2022/12/anh-3d-thien-nhien-010.jpg" alt=""
+                     style="width: 100px; max-height: 200px;">
+                <div class="media-body">
+                    <h5 class="mt-0 text-info">Nguyễn Hải Linh</h5>
+                    <!-- <h6 class="mt-0 text-info">(linhnh@gmail.com)</h6> -->
+                    <p>
+                        HTML viết tắt của chữ HyperText Markup Language (Ngôn ngữ đánh dấu siêu văn bản). Được gọi là
+                        ngôn ngữ nhưng nó không giống như các ngôn ngữ kịch bản sử dụng các kịch bản để thi hành các tác
+                        vụ ...
+                    </p>
+                </div>
+            </li>
+            <li class="media" style="margin-left: 40px; margin-bottom: 20px;  width: 90%;">
+                <img class="mx-3 rounded order-0" src="https://vapa.vn/wp-content/uploads/2022/12/anh-3d-thien-nhien-010.jpg" alt=""
+                     style="width: 100px; max-height: 200px">
+                <div class="media-body">
+                    <h5 class="mt-0 text-info">Nguyễn Hải Linh</h5>
+                    <!-- <h6 class="mt-0 text-info">(linhnh@gmail.com)</h6> -->
+                    <p>
+                        Cài đặt thiết lập chương trình khung Zend skeleton application, cấu trúc ứng dụng Zend Framework
+                        3 cơ bản để phát triển website ...
+                    </p>
+                </div>
+            </li>
+            <li class="media" style="margin-left: 40px; margin-bottom: 20px; width: 90%;">
+                <img class="mx-3 rounded order-0"
+                     src="https://vapa.vn/wp-content/uploads/2022/12/anh-3d-thien-nhien-010.jpg"
+                     alt="" style="width: 100px; max-height: 200px">
+                <div class="media-body">
+                    <h5 class="mt-0 text-info">Nguyễn Hải Linh</h5>
+                    <!-- <h6 class="mt-0 text-info">(linhnh@gmail.com)</h6> -->
+                    <p>
+                        Hướng dẫn cài đặt môi trường phát triển ứng dụng Android Studio, tạo máy ảo để chạy thử ứng dụng,
+                        thực hành tạo project Android đầu tiên để tìm hiểu cấu trúc cơ bản
+                    </p>
+                </div>
+            </li>
+        </ul>
+        <button class="btn btn-info" style="margin-left: 50px; width: 90%; margin-top: 10px; width: 100px;" data-toggle="modal" data-target="#commentForm">Bình luận</button>
+        <div id="commentForm" class="modal fade" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Để lại bình luận tại đây</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <textarea class="form-control border-info" id="CommentContent" rows="3"></textarea>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Hủy bỏ</button>
+                        <button type="button" class="btn btn-primary" onclick="Save()">Bình luận</button>
+                    </div>
                 </div>
             </div>
         </div>

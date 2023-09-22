@@ -7,6 +7,7 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Net.Http;
+using System.Reflection;
 using System.Threading.Tasks;
 
 namespace LarsTravelClient.Controllers
@@ -23,6 +24,12 @@ namespace LarsTravelClient.Controllers
         {
             return View();
         }
+
+        public IActionResult RegisterInfo()
+        {
+            ViewData["RegisterEmail"] = HttpContext.Session.GetString("RegisterUsername");
+            return View();
+        }
         public IActionResult ConfirmEmail()
         {
             return View();
@@ -31,40 +38,57 @@ namespace LarsTravelClient.Controllers
         [HttpPost]
         public async Task<IActionResult> RegisterForm([FromBody] Account value)
         {
-            try 
+            string url = "https://localhost:44348/checkEmailExis";
+            User User = new User();
+            try
             {
-                string url = "https://localhost:44348/api/User/checkEmailExis";
-                User User = new User();
-                try
+                string stringValue = JsonConvert.SerializeObject(value);
+                ResponseData responseData = await _callApi.PostApi(url, stringValue);
+                if (responseData.Success)
                 {
-                    string stringValue = JsonConvert.SerializeObject(value);
-                    ResponseData responseData = await _callApi.PostApi(url, stringValue);
-                    if (responseData.Success)
+                    if (responseData.Message.Equals("Success"))
                     {
-                        if(responseData.Message.Equals("Success")) return RedirectToAction("ConfirmEmail", "Register");
-                        return RedirectToAction("Register", "Register");
+                        HttpContext.Session.SetString("RegisterUsername", value.Username);
+                        HttpContext.Session.SetString("RegisterPassword", value.Password);
+                        return Ok(new { success = true, message = "" });
                     }
-                    return RedirectToAction("Error", "Register");
+                    return Ok(new { success = false, message = "" });
                 }
-                catch (HttpRequestException e)
-                {
-                    return View();
-                }
-                //if (model.Username == "admin" && model.Password == "password")
-                //{
-                //    HttpContext.Session.SetString("emailRegister", model.Username);
-                //    return Ok(new { success = true, message = "Đăng ký với email thành công" });
-                //}
-                //else
-                //{
-                //    return Ok(new { success = false, message = "Email đã được sử dụng" });
-                //}
+                return BadRequest(new { success = false, message = responseData.Message });
             }
-            catch (Exception ex)
+            catch (HttpRequestException e)
             {
-                return BadRequest(new { success = false, message = "Không thể kết nối với Server" });
+                return BadRequest(new { success = false, message = e.Message });
             }
         }
 
+        [HttpPost]
+        public async Task<IActionResult> SaveRegister([Bind] User value)
+        {
+            string url = "https://localhost:44348/api/User";
+            //value.Username = HttpContext.Session.GetString("RegisterUsername");
+            //value.Password = HttpContext.Session.GetString("RegisterPassword");
+            value.Username = "username";
+            value.Password = "password";
+            value.Role = "User";
+            try
+            {
+                string stringValue = JsonConvert.SerializeObject(value);
+                ResponseData responseData = await _callApi.PostApi(url, stringValue);
+                if (responseData.Success)
+                {
+                    if (responseData.Message.Equals("Success"))
+                    {
+                        return RedirectToAction("Index", "Home");
+                    }
+                    return RedirectToAction("Register", "Register");
+                }
+                return RedirectToAction("Error", "Home");
+            }
+            catch (Exception ex)
+            {
+                return RedirectToAction("Error", "Home");
+            }
+        }
     }
 }

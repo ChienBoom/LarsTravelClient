@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "7aj+oE3A9ONtwkkYyp/DA3OT1Is+k9CYedF6Ac2zs3a4iVbcLep4kxZWL7DzP5j2RLGCqk0mjGjDx/2NHJ9+SQ==",
+  "dgSpecHash": "LL8PjRprqD8/tgt144HSNtYhwCQU2ziiBL9o62IG3CkbVUgcKtJ4GF2AWW2JrzS27tkeRMGl19tEsTuiMUczYw==",
   "success": true,
-  "projectFilePath": "E:\\.NET Project\\LarsTravelClient\\LarsTravelClient\\LarsTravelClient.csproj",
+  "projectFilePath": "E:\\MyProjectPtit\\LarsTravelClientNet\\LarsTravelClient\\LarsTravelClient.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Administrator\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512"
   ],

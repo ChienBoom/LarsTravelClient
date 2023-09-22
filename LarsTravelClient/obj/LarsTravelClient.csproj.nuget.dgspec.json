@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "E:\\.NET Project\\LarsTravelClient\\LarsTravelClient\\LarsTravelClient.csproj": {}
+    "E:\\MyProjectPtit\\LarsTravelClientNet\\LarsTravelClient\\LarsTravelClient.csproj": {}
   },
   "projects": {
-    "E:\\.NET Project\\LarsTravelClient\\LarsTravelClient\\LarsTravelClient.csproj": {
+    "E:\\MyProjectPtit\\LarsTravelClientNet\\LarsTravelClient\\LarsTravelClient.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\.NET Project\\LarsTravelClient\\LarsTravelClient\\LarsTravelClient.csproj",
+        "projectUniqueName": "E:\\MyProjectPtit\\LarsTravelClientNet\\LarsTravelClient\\LarsTravelClient.csproj",
         "projectName": "LarsTravelClient",
-        "projectPath": "E:\\.NET Project\\LarsTravelClient\\LarsTravelClient\\LarsTravelClient.csproj",
+        "projectPath": "E:\\MyProjectPtit\\LarsTravelClientNet\\LarsTravelClient\\LarsTravelClient.csproj",
         "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
-        "outputPath": "E:\\.NET Project\\LarsTravelClient\\LarsTravelClient\\obj\\",
+        "outputPath": "E:\\MyProjectPtit\\LarsTravelClientNet\\LarsTravelClient\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

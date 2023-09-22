@@ -25,7 +25,7 @@ namespace LarsTravelClient.Controllers
                 }
                 else
                 {
-                    return BadRequest(new { success = false, message = "Tên người dùng hoặc mật khẩu không đúng" });
+                    return Ok(new { success = false, message = "Tên người dùng hoặc mật khẩu không đúng" });
                 }
             }
             catch(Exception ex)

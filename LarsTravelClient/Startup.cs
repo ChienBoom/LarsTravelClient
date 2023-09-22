@@ -25,20 +25,20 @@ namespace LarsTravelClient
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.ConfigureApplicationCookie(options =>
-            {
-                options.LoginPath = "/Home/Login"; 
-                options.ReturnUrlParameter = "/Home/Index"; 
-            });
-            services.AddAuthentication(options =>
-            {
-                options.DefaultScheme = "Cookies";
-            })
-            .AddCookie("Cookies", options =>
-            {
-                 options.LoginPath = "/Home/Login";
-                 options.AccessDeniedPath = "/Home/ConfirmEmail"; // Đường dẫn đến trang từ chối truy cập
-            });
+            //services.ConfigureApplicationCookie(options =>
+            //{
+            //    options.LoginPath = "/Home/Login"; 
+            //    options.ReturnUrlParameter = "/Home/Index"; 
+            //});
+            //services.AddAuthentication(options =>
+            //{
+            //    options.DefaultScheme = "Cookies";
+            //})
+            //.AddCookie("Cookies", options =>
+            //{
+            //     options.LoginPath = "/Home/Login";
+            //     options.AccessDeniedPath = "/Home/ConfirmEmail"; // Đường dẫn đến trang từ chối truy cập
+            //});
             services.AddMvc();
             services.AddSession();
             services.AddHttpClient();

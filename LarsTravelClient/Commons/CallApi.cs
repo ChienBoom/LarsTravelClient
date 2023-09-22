@@ -29,13 +29,13 @@ namespace LarsTravelClient.Commons
                 if (response.IsSuccessStatusCode)
                 {
                     string result = await response.Content.ReadAsStringAsync();
-                    responseData.Message = "Yêu cầu thành công";
+                    responseData.Message = "Success";
                     responseData.ResultData = result;
                     return responseData;
                 }
                 else
                 {
-                    responseData.Message = "Yêu cầu thất bại";
+                    responseData.Message = "Faild";
                     responseData.ResultData = null;
                     return responseData;
                 }
@@ -61,13 +61,13 @@ namespace LarsTravelClient.Commons
                 if (response.IsSuccessStatusCode)
                 {
                     string responseContent = await response.Content.ReadAsStringAsync();
-                    responseData.Message = "Yêu cầu thành công";
+                    responseData.Message = "Success";
                     responseData.ResultData = responseContent;
                     return responseData;
                 }
                 else
                 {
-                    responseData.Message = "Yêu cầu thất bại";
+                    responseData.Message = "Faild";
                     responseData.ResultData = null;
                     return responseData;
                 }
@@ -93,13 +93,13 @@ namespace LarsTravelClient.Commons
                 if (response.IsSuccessStatusCode)
                 {
                     string responseContent = await response.Content.ReadAsStringAsync();
-                    responseData.Message = "Yêu cầu thành công";
+                    responseData.Message = "Success";
                     responseData.ResultData = responseContent;
                     return responseData;
                 }
                 else
                 {
-                    responseData.Message = "Yêu cầu thất bại";
+                    responseData.Message = "Faild";
                     responseData.ResultData = null;
                     return responseData;
                 }
@@ -124,13 +124,13 @@ namespace LarsTravelClient.Commons
                 if (response.IsSuccessStatusCode)
                 {
                     string responseContent = await response.Content.ReadAsStringAsync();
-                    responseData.Message = "Yêu cầu thành công";
+                    responseData.Message = "Success";
                     responseData.ResultData = responseContent;
                     return responseData;
                 }
                 else
                 {
-                    responseData.Message = "Yêu cầu thất bại";
+                    responseData.Message = "Faild";
                     responseData.ResultData = null;
                     return responseData;
                 }

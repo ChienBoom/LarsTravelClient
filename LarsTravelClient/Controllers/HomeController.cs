@@ -19,7 +19,7 @@ namespace LarsTravelClient.Controllers
             _logger = logger;
         }
 
-        public IActionResult Index()
+        public IActionResult CityTourDetail()
         {
             return View();
         }
@@ -50,6 +50,31 @@ namespace LarsTravelClient.Controllers
         }
 
         public IActionResult AccountManager()
+        {
+            return View();
+        }
+
+        public IActionResult CityManager()
+        {
+            return View();
+        }
+
+        public IActionResult AddHotel()
+        {
+            return View();
+        }
+
+        public IActionResult HotelManager()
+        {
+            return View();
+        }
+
+        public IActionResult RevenueStatisticsDetail()
+        {
+            return View();
+        }
+
+        public IActionResult TourManager()
         {
             return View();
         }
