@@ -16,8 +16,17 @@
             </div>
             <div class="col-10 col-sm-10 col-md-10" style="padding-left: 50px; padding-top: 20px;">
                 <form action="">
-                    <input type="text" class="col-9 col-sm-9 col-md-9 rounded border-info" style="height:60px;" placeholder="TÌM TOUR DU LỊCH">
-                    <button class="btn btn-info col-2 col-sm-2 col-md-2 rounded border-info" style="height:60px; background-image: url('Image/search1.png'); background-size: 60px 60px; background-repeat: no-repeat;"></button>
+                    <label for="searchSelect" class="text-info text-center font-italic">Nhập Tour muốn đến</label>
+                    <select id="searchSelect" class="col-12 col-sm-12 col-md-12 rounded border-info" style="height:60px;" multiple>
+                        <option>Lựa chọn 1</option>
+                        <option>Lựa chọn 2</option>
+                        <option>Lựa chọn 3</option>
+                        <option>Lựa chọn 4</option>
+                        <option>Lựa chọn 5</option>
+                        <option>Lựa chọn 6</option>
+                        <option>Lựa chọn 17</option>
+                    </select>
+                    <button class="btn btn-info col-12 col-sm-12 col-md-12 rounded border-info" style="height:40px; margin-top: 10px;">Tìm kiếm</button>
                 </form>
             </div>
             <div class="text-info text-center col-9 col-sm-9 col-md-9">
@@ -25,8 +34,17 @@
             </div>
             <div class="col-10 col-sm-10 col-md-10" style="padding-left: 50px; padding-top: 10px;">
                 <form action="">
-                    <input type="text" class="col-9 col-sm-9 col-md-9 rounded border-info" style="height:60px;" placeholder="TÌM TOUR DU LỊCH">
-                    <button class="btn btn-info col-2 col-sm-2 col-md-2 rounded border-info" style="height:60px; background-image: url('Image/search1.png'); background-size: 60px 60px; background-repeat: no-repeat;"></button>
+                    <label for="searchSelect1" class="text-info text-center font-italic">Nhập Tour muốn đến</label>
+                    <select id="searchSelect1" class="col-12 col-sm-12 col-md-12 rounded border-info" style="height:60px;" multiple>
+                        <option>Lựa chọn 1</option>
+                        <option>Lựa chọn 2</option>
+                        <option>Lựa chọn 3</option>
+                        <option>Lựa chọn 4</option>
+                        <option>Lựa chọn 5</option>
+                        <option>Lựa chọn 6</option>
+                        <option>Lựa chọn 17</option>
+                    </select>
+                    <button class="btn btn-info col-12 col-sm-12 col-md-12 rounded border-info" style="height:40px; margin-top: 10px;">Tìm kiếm</button>
                 </form>
             </div>
         </div>
@@ -169,3 +187,23 @@
         </div>
     </div>
 </body>
+<script>
+    $(document).ready(function () {
+        $('#searchSelect').select2({
+            placeholder: 'Chọn một lựa chọn', // Placeholder mô tả
+            allowClear: true, // Cho phép xóa lựa chọn hiện tại
+            minimumInputLength: 1, // Số ký tự tối thiểu trước khi bắt đầu tìm kiếm
+            width: '100%', // Độ rộng của ô tìm kiếm
+            theme: 'classic', // Giao diện của Select2 (classic hoặc default)
+            // Các tùy chọn khác...
+        });
+        $('#searchSelect1').select2({
+            placeholder: 'Chọn một lựa chọn', // Placeholder mô tả
+            allowClear: true, // Cho phép xóa lựa chọn hiện tại
+            minimumInputLength: 1, // Số ký tự tối thiểu trước khi bắt đầu tìm kiếm
+            width: '100%', // Độ rộng của ô tìm kiếm
+            theme: 'classic', // Giao diện của Select2 (classic hoặc default)
+            // Các tùy chọn khác...
+        });
+    });
+</script>

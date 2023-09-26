@@ -10,23 +10,41 @@
                 LARS TRAVEL
             </div>
             <div class="col-12 col-sm-12 col-md-12 text-info" style="padding-top: 30px; padding-left: 50px;">SEARCH</div>
-            <div class="col-8 col-sm-8 col-md-8 text-info" style="padding-top: 20px; padding-left: 50px;">
+            @*<div class="col-8 col-sm-8 col-md-8 text-info" style="padding-top: 20px; padding-left: 50px;">
                 Find your next holiday on 72
                 cool packages!
-            </div>
+            </div>*@
             <div class="col-10 col-sm-10 col-md-10" style="padding-left: 50px; padding-top: 20px;">
                 <form action="">
-                    <input type="text" class="col-9 col-sm-9 col-md-9 rounded border-info" style="height:60px;" placeholder="TÌM TOUR DU LỊCH">
-                    <button class="btn col-2 col-sm-2 col-md-2 rounded border-info" style="height:60px; background-image: url('~/Icon/search.png'); background-size: 60px 60px; background-repeat: no-repeat;"></button>
+                    <label for="searchSelect" class="text-info text-center font-italic">Nhập tên Tour muốn đến</label>
+                    <select id="searchSelect" class="col-12 col-sm-12 col-md-12 rounded border-info" style="height:60px;" multiple>
+                        <option>Lựa chọn 1</option>
+                        <option>Lựa chọn 2</option>
+                        <option>Lựa chọn 3</option>
+                        <option>Lựa chọn 4</option>
+                        <option>Lựa chọn 5</option>
+                        <option>Lựa chọn 6</option>
+                        <option>Lựa chọn 17</option>
+                    </select>
+                    <button class="btn btn-info col-12 col-sm-12 col-md-12 rounded border-info" style="height:40px; margin-top: 10px;">Tìm kiếm</button>
                 </form>
             </div>
-            <div class="text-info text-center col-9 col-sm-9 col-md-9">
+            <div class="text-info text-center col-11 col-sm-11 col-md-11">
                 --Or--
             </div>
             <div class="col-10 col-sm-10 col-md-10" style="padding-left: 50px; padding-top: 10px;">
                 <form action="">
-                    <input type="text" class="col-9 col-sm-9 col-md-9 rounded border-info" style="height:60px;" placeholder="TÌM TOUR DU LỊCH">
-                    <button class="btn col-2 col-sm-2 col-md-2 rounded border-info" style="height:60px; background-image: url('~/Icon/search.png'); background-size: 60px 60px; background-repeat: no-repeat;"><img src="~/Icon/search.png" style="width:40px; height:40px;"/></button>
+                    <label for="searchSelect1" class="text-info text-center font-italic">Nhập tên Thành phố muốn đến</label>
+                    <select id="searchSelect1" class="col-12 col-sm-12 col-md-12 rounded border-info" style="height:60px;" multiple>
+                        <option>Lựa chọn 1</option>
+                        <option>Lựa chọn 2</option>
+                        <option>Lựa chọn 3</option>
+                        <option>Lựa chọn 4</option>
+                        <option>Lựa chọn 5</option>
+                        <option>Lựa chọn 6</option>
+                        <option>Lựa chọn 17</option>
+                    </select>
+                    <button class="btn btn-info col-12 col-sm-12 col-md-12 rounded border-info" style="height:40px; margin-top: 10px;">Tìm kiếm</button>
                 </form>
             </div>
         </div>
@@ -80,7 +98,7 @@
                 <div class="card-deck">
                     <div class="card col-4 col-sm-4 col-md-4 text-info">
                         <img class="card-img" style="width: 80%; height: 60%; margin-left: 10%;"
-                             src="https://vapa.vn/wp-content/uploads/2022/12/anh-3d-thien-nhien-010.jpg" alt="">
+                             src="~/UploadImage/vinhHaLong.jpg" alt="">
                         <div class="card-body">
                             <h5 class="card-subtitle">Ảnh 4K - Đây là sử dụng tiêu đề phụ</h5>
                             <p class="card-text">Đây là phần nội dung của Card - Thiết lập màu chữ cho card</p>
@@ -169,3 +187,21 @@
         </div>
     </div>
 </body>
+<script>
+    $(document).ready(function () {
+        $('#searchSelect').select2({
+            allowClear: true, // Cho phép xóa lựa chọn hiện tại
+            minimumInputLength: 1, // Số ký tự tối thiểu trước khi bắt đầu tìm kiếm
+            width: '100%', // Độ rộng của ô tìm kiếm
+            theme: 'classic', // Giao diện của Select2 (classic hoặc default),
+            // Các tùy chọn khác...
+        });
+        $('#searchSelect1').select2({
+            allowClear: true, // Cho phép xóa lựa chọn hiện tại
+            minimumInputLength: 1, // Số ký tự tối thiểu trước khi bắt đầu tìm kiếm
+            width: '100%', // Độ rộng của ô tìm kiếm
+            theme: 'classic', // Giao diện của Select2 (classic hoặc default)
+            // Các tùy chọn khác...
+        });
+    });
+</script>

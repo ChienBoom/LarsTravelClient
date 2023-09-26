@@ -8,6 +8,7 @@
     <Folder Include="Areas\Admin\Data\" />
     <Folder Include="Areas\Admin\Models\" />
     <Folder Include="Areas\Users\Models\" />
+    <Folder Include="UploadImage\" />
     <Folder Include="Service\" />
     <Folder Include="wwwroot\Icon\" />
     <Folder Include="wwwroot\Video\" />
