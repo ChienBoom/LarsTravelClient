@@ -10,13 +10,13 @@
                 LARS TRAVEL
             </div>
             <div class="col-12 col-sm-12 col-md-12 text-info" style="padding-top: 30px; padding-left: 50px;">SEARCH</div>
-            <div class="col-8 col-sm-8 col-md-8 text-info" style="padding-top: 20px; padding-left: 50px;">
+            @*<div class="col-8 col-sm-8 col-md-8 text-info" style="padding-top: 20px; padding-left: 50px;">
                 Find your next holiday on 72
                 cool packages!
-            </div>
+            </div>*@
             <div class="col-10 col-sm-10 col-md-10" style="padding-left: 50px; padding-top: 20px;">
                 <form action="">
-                    <label for="searchSelect" class="text-info text-center font-italic">Nhập Tour muốn đến</label>
+                    <label for="searchSelect" class="text-info text-center font-italic">Nhập tên Tour muốn đến</label>
                     <select id="searchSelect" class="col-12 col-sm-12 col-md-12 rounded border-info" style="height:60px;" multiple>
                         <option>Lựa chọn 1</option>
                         <option>Lựa chọn 2</option>
@@ -29,12 +29,12 @@
                     <button class="btn btn-info col-12 col-sm-12 col-md-12 rounded border-info" style="height:40px; margin-top: 10px;">Tìm kiếm</button>
                 </form>
             </div>
-            <div class="text-info text-center col-9 col-sm-9 col-md-9">
+            <div class="text-info text-center col-11 col-sm-11 col-md-11">
                 --Or--
             </div>
             <div class="col-10 col-sm-10 col-md-10" style="padding-left: 50px; padding-top: 10px;">
                 <form action="">
-                    <label for="searchSelect1" class="text-info text-center font-italic">Nhập Tour muốn đến</label>
+                    <label for="searchSelect1" class="text-info text-center font-italic">Nhập tên Thành phố muốn đến</label>
                     <select id="searchSelect1" class="col-12 col-sm-12 col-md-12 rounded border-info" style="height:60px;" multiple>
                         <option>Lựa chọn 1</option>
                         <option>Lựa chọn 2</option>
@@ -190,7 +190,6 @@
 <script>
     $(document).ready(function () {
         $('#searchSelect').select2({
-            placeholder: 'Chọn một lựa chọn', // Placeholder mô tả
             allowClear: true, // Cho phép xóa lựa chọn hiện tại
             minimumInputLength: 1, // Số ký tự tối thiểu trước khi bắt đầu tìm kiếm
             width: '100%', // Độ rộng của ô tìm kiếm
@@ -198,7 +197,6 @@
             // Các tùy chọn khác...
         });
         $('#searchSelect1').select2({
-            placeholder: 'Chọn một lựa chọn', // Placeholder mô tả
             allowClear: true, // Cho phép xóa lựa chọn hiện tại
             minimumInputLength: 1, // Số ký tự tối thiểu trước khi bắt đầu tìm kiếm
             width: '100%', // Độ rộng của ô tìm kiếm

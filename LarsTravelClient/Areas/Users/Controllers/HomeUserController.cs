@@ -3,16 +3,17 @@
 namespace LarsTravelClient.Areas.Users.Controllers
 {
     [Area("Users")]
+    [Route("/user")]
     public class HomeUserController : Controller
     {
         [HttpGet]
-        [Route("/Home")]
+        [Route("Home")]
         public IActionResult Home()
         {
             return View();
         }
 
-        [HttpGet("/History")]
+        [HttpGet("History")]
         public IActionResult History()
         {
             return View();

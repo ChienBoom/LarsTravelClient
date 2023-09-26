@@ -168,7 +168,6 @@ E:\MyProjectPtit\LarsTravelClientNet\LarsTravelClient\obj\Debug\netcoreapp3.1\Ra
 E:\MyProjectPtit\LarsTravelClientNet\LarsTravelClient\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\HomeAdmin\CityManager.cshtml.g.cs
 E:\MyProjectPtit\LarsTravelClientNet\LarsTravelClient\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\HomeAdmin\CityTourDetail.cshtml.g.cs
 E:\MyProjectPtit\LarsTravelClientNet\LarsTravelClient\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\HomeAdmin\History.cshtml.g.cs
-E:\MyProjectPtit\LarsTravelClientNet\LarsTravelClient\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\HomeAdmin\Home.cshtml.g.cs
 E:\MyProjectPtit\LarsTravelClientNet\LarsTravelClient\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\HomeAdmin\HotelManager.cshtml.g.cs
 E:\MyProjectPtit\LarsTravelClientNet\LarsTravelClient\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\HomeAdmin\RevenueStatisticsDetail.cshtml.g.cs
 E:\MyProjectPtit\LarsTravelClientNet\LarsTravelClient\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\HomeAdmin\TourDetail.cshtml.g.cs
@@ -192,3 +191,4 @@ E:\MyProjectPtit\LarsTravelClientNet\LarsTravelClient\obj\Debug\netcoreapp3.1\Ra
 E:\MyProjectPtit\LarsTravelClientNet\LarsTravelClient\obj\Debug\netcoreapp3.1\Razor\Views\Register\_Error.cshtml.g.cs
 E:\MyProjectPtit\LarsTravelClientNet\LarsTravelClient\obj\Debug\netcoreapp3.1\Razor\Areas\Users\Views\HomeUser\CityTourDetail.cshtml.g.cs
 E:\MyProjectPtit\LarsTravelClientNet\LarsTravelClient\obj\Debug\netcoreapp3.1\Razor\Areas\Users\Views\HomeUser\TourDetail.cshtml.g.cs
+E:\MyProjectPtit\LarsTravelClientNet\LarsTravelClient\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\HomeAdmin\Home.cshtml.g.cs

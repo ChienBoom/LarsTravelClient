@@ -39,9 +39,9 @@ namespace LarsTravelClient.Controllers
                     if (resultData.Message.Equals("Success"))
                     {
                         TempData["Account"] = stringValue;
-                        if (responseData.ResultData.Equals("Admin"))
+                        if (resultData.ResultData.Equals("Admin"))
                         {
-                            return RedirectToAction("Home", "HomeAdmin", new {area = "Admin"});
+                            return RedirectToAction("HomeAdmin", "HomeAdmin", new {area = "Admin"});
                         }
                         return RedirectToAction("Home", "HomeUser", new {area = "Users"});
                     }
