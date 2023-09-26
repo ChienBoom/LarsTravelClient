@@ -12,26 +12,32 @@
                 LARS TRAVEL
             </div>
             <div class="col-12 col-sm-12 col-md-12 text-info" style="padding-top: 30px; padding-left: 50px;">LOGIN</div>
-            <form action="#" class="col-10 col-sm-10 col-md-10" style="padding-left: 50px; ">
+            <form action="Login/CheckLogin" method="post" class="col-10 col-sm-10 col-md-10" style="padding-left: 50px; ">
+                @Html.AntiForgeryToken()
                 <div class="" style="padding-top: 20px;">
-                    <input type="text" class="col-12 col-sm-12 col-md-12 rounded border-info" id="username" style="height:60px;" placeholder="NHẬP TÀI KHOẢN">
+                    <input type="email" class="col-12 col-sm-12 col-md-12 rounded border-info" name="username" id="username" style="height:60px;" placeholder="NHẬP TÀI KHOẢN" value="@ViewData["Username"]">
                 </div>
                 <div class="" style="padding-top: 10px;">
-                    <input type="text" class="col-12 col-sm-12 col-md-12 rounded border-info" id="password" style="height:60px;" placeholder="NHẬP MẬT KHẨU">
+                    <input type="password" class="col-12 col-sm-12 col-md-12 rounded border-info" name="password" id="password" style="height:60px;" placeholder="NHẬP MẬT KHẨU" value="@ViewData["Password"]">
+                </div>
+                <div class="" style="padding-top: 10px;">
+                    <input type="checkbox" id="checkboxShow">
+                    <label for="">Show Password</label>
                 </div>
                 <div class="" style="padding-top: 10px;">
                     <a href="" class="font-italic text-info">Quên mật khẩu</a>
-                    <div id="responseMessage"></div>
+                    <div id="Message"></div>
                 </div>
-                <button class="col-12 col-sm-12 col-md-12 rounded border-info btn-info shadow-sm" style="height:60px; margin-top: 10px;" onclick="LoginToAccount()">ĐĂNG NHẬP</button>
+                <button type="submit" class="col-12 col-sm-12 col-md-12 rounded border-info btn-info shadow-sm" style="height:60px; margin-top: 10px;">ĐĂNG NHẬP</button>
             </form>
-
+            <input type="text" id="Status" value="@ViewData["Status"]" hidden />
             <div class="text-info text-center col-10 col-sm-10 col-md-10" style="padding-top: 10px;">
                 --Or--
             </div>
             <div class="col-10 col-sm-10 col-md-10" style="padding-left: 50px; padding-top: 10px;">
                 <button class="col-12 col-sm-12 col-md-12 rounded border-danger btn-danger shadow-sm" style="height:60px;">ĐĂNG NHẬP VỚI GOOGLE</button>
-                <button class="col-12 col-sm-12 col-md-12 rounded border-success btn-success shadow-sm" style="height:60px; margin-top: 20px;">ĐĂNG NHẬP VỚI EMAIL</button>
+                @*<button class="col-12 col-sm-12 col-md-12 rounded border-success btn-success shadow-sm" style="height:60px; margin-top: 20px;" asp-controller="Register" asp-action="Register"></button>*@
+                <a class="btn col-12 col-sm-12 col-md-12 rounded border-success btn-success shadow-sm" style="height:60px; margin-top: 20px; display: flex; align-items: center; justify-content: center;" href="Register/Register">CHƯA CÓ TÀI KHOẢN - ĐĂNG KÝ</a>
             </div>
         </div>
         <div class="col-8 col-sm-8 col-md-8">
@@ -80,28 +86,43 @@
 </body>
 <script>
     debugger
-    function LoginToAccount(){
-        var username = $("#username").val();
-        var password = $("#password").val();
-        var data = {
-            username: username,
-            password: password
+    $(document).ready(function () {
+        var messageValue = $("#Status").val();
+        if (messageValue == 1) {
+            $("#Message").addClass("text-danger").html("Sai thông tin mật khẩu hoặc tài khoản không tồn tại.");
+        } else if (messageValue == 2) {
+            $("#Message").addClass("text-danger").html("Lỗi trong quá trình xử lý Server.");
         }
-        $.ajax({
-            url: "/Login/CheckLogin",
-            method: "POST",
-            data: JSON.stringify(data),
-            contentType: "application/json",
-            success: function (response) {
-                $("#responseMessage").removeClass("text-danger")
-                $("#responseMessage").addClass("text-info text-center");
-                $("#responseMessage").html("Đăng nhập thành công");
-                window.location.href = "/Home/Index";
-            },
-            error: function (error) {
-                $("#responseMessage").addClass("text-danger text-center");
-                $("#responseMessage").html("Đăng nhập thất bại");
-            }
-        });
-    }
+    });
+    $("#checkboxShow").change(function () {
+        if ($(this).is(":checked")) {
+            $("#password").attr("type", "text");
+        } else {
+            $("#password").attr("type", "password");
+        }
+    });
+    //function LoginToAccount(){
+    //    var username = $("#username").val();
+    //    var password = $("#password").val();
+    //    var data = {
+    //        username: username,
+    //        password: password
+    //    }
+    //    $.ajax({
+    //        url: "/Login/CheckLogin",
+    //        method: "POST",
+    //        data: JSON.stringify(data),
+    //        contentType: "application/json",
+    //        success: function (response) {
+    //            $("#responseMessage").removeClass("text-danger")
+    //            $("#responseMessage").addClass("text-info text-center");
+    //            $("#responseMessage").html("Đăng nhập thành công");
+    //            window.location.href = "/Home/Index";
+    //        },
+    //        error: function (error) {
+    //            $("#responseMessage").addClass("text-danger text-center");
+    //            $("#responseMessage").html("Đăng nhập thất bại");
+    //        }
+    //    });
+    //}
 </script>

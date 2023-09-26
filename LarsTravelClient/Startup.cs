@@ -1,5 +1,4 @@
 ﻿using LarsTravelClient.Commons;
-using LarsTravelClient.Service;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -39,7 +38,8 @@ namespace LarsTravelClient
             //     options.LoginPath = "/Home/Login";
             //     options.AccessDeniedPath = "/Home/ConfirmEmail"; // Đường dẫn đến trang từ chối truy cập
             //});
-            services.AddMvc();
+            //services.AddMvc();
+            services.AddMvc(options => options.EnableEndpointRouting = false);
             services.AddSession();
             services.AddHttpClient();
             services.AddTransient<CallApi>();
@@ -69,13 +69,23 @@ namespace LarsTravelClient
             app.UseAuthentication();
 
             app.UseAuthorization();
-
+            app.UseMvc(routes =>
+            {
+                routes.MapRoute(
+                    name: "default",
+                    template: "{controller=Login}/{action=Login}/{id?}");
+            });
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapControllerRoute(
-                    name: "default",
-                    pattern: "{controller=Login}/{action=Login}/{id?}");
+                endpoints.MapRazorPages();
             });
+            //app.UseEndpoints(endpoints =>
+            //{
+            //    endpoints.MapControllerRoute(
+            //        name: "default",
+            //        pattern: "{controller=Login}/{action=Login}/{id?}");
+            //    //endpoints.MapRazorPages();
+            //});
         }
     }
 }

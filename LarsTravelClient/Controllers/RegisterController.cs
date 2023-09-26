@@ -10,7 +10,7 @@ using System.Net.Http;
 using System.Reflection;
 using System.Threading.Tasks;
 
-namespace LarsTravelClient.Controllers
+namespace LarsTravelClient.Areas.Common.Controllers
 {
     public class RegisterController : Controller
     {
@@ -20,14 +20,20 @@ namespace LarsTravelClient.Controllers
             _callApi = callApi;
         }
 
-        public IActionResult Register()
+        public IActionResult Register(int status, string username, string password)
         {
+            ViewData["Status"] = status;
+            ViewData["Username"] = username;
+            ViewData["Password"] = password;
             return View();
         }
 
         public IActionResult RegisterInfo()
         {
-            ViewData["RegisterEmail"] = HttpContext.Session.GetString("RegisterUsername");
+            string value = TempData["Account"].ToString();
+            Account account = JsonConvert.DeserializeObject<Account>(value);
+            ViewData["AccountEmail"] = account.Username;
+            ViewData["AccountPassword"] = account.Password;
             return View();
         }
         public IActionResult ConfirmEmail()
@@ -36,40 +42,35 @@ namespace LarsTravelClient.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> RegisterForm([FromBody] Account value)
+        public async Task<IActionResult> RegisterForm(Account value)
         {
             string url = "https://localhost:44348/checkEmailExis";
-            User User = new User();
             try
             {
                 string stringValue = JsonConvert.SerializeObject(value);
                 ResponseData responseData = await _callApi.PostApi(url, stringValue);
                 if (responseData.Success)
                 {
-                    if (responseData.Message.Equals("Success"))
+                    ResponseData resultData = JsonConvert.DeserializeObject<ResponseData>(responseData.ResultData);
+                    if (resultData.Message.Equals("Success"))
                     {
-                        HttpContext.Session.SetString("RegisterUsername", value.Username);
-                        HttpContext.Session.SetString("RegisterPassword", value.Password);
-                        return Ok(new { success = true, message = "" });
+                        TempData["Account"] = stringValue;
+                        return RedirectToAction("RegisterInfo");
                     }
-                    return Ok(new { success = false, message = "" });
+                    return RedirectToAction("Register", new { status = 1, username = value.Username, password = value.Password });
                 }
-                return BadRequest(new { success = false, message = responseData.Message });
+                return RedirectToAction("Register", new { status = 2, username = value.Username, password = value.Password });
             }
             catch (HttpRequestException e)
             {
-                return BadRequest(new { success = false, message = e.Message });
+                return RedirectToAction("Register", new { status = 2, username = value.Username, password = value.Password });
             }
         }
 
         [HttpPost]
-        public async Task<IActionResult> SaveRegister([Bind] User value)
+        public async Task<IActionResult> SaveRegister(User value)
         {
             string url = "https://localhost:44348/api/User";
-            //value.Username = HttpContext.Session.GetString("RegisterUsername");
-            //value.Password = HttpContext.Session.GetString("RegisterPassword");
-            value.Username = "username";
-            value.Password = "password";
             value.Role = "User";
             try
             {
@@ -79,15 +80,15 @@ namespace LarsTravelClient.Controllers
                 {
                     if (responseData.Message.Equals("Success"))
                     {
-                        return RedirectToAction("Index", "Home");
+                        return RedirectToAction("Home", "HomeUser", new { area = "Users" });
                     }
-                    return RedirectToAction("Register", "Register");
+                    return RedirectToAction("Error", "HomeUser", new { area = "Users" });
                 }
-                return RedirectToAction("Error", "Home");
+                return RedirectToAction("Error", "HomeUser", new { area = "Users" });
             }
             catch (Exception ex)
             {
-                return RedirectToAction("Error", "Home");
+                return RedirectToAction("Error", "HomeUser", new { area = "Users" });
             }
         }
     }

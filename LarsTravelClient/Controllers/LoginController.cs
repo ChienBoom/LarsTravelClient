@@ -1,36 +1,57 @@
 ﻿using LarsTravel.Models;
+using LarsTravelClient.Commons;
 using LarsTravelClient.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json.Linq;
+using Newtonsoft.Json;
 using System;
+using System.Threading.Tasks;
 
 namespace LarsTravelClient.Controllers
 {
     public class LoginController : Controller
     {
-        public IActionResult Login()
+        private CallApi _callApi;
+        public LoginController(CallApi callApi)
         {
+            _callApi = callApi;
+        }
+        public IActionResult Login(int status, string username, string password)
+        {
+            ViewData["Status"] = status;
+            ViewData["Username"] = username;
+            ViewData["Password"] = password;
             return View();
         }
-        
+
         [HttpPost]
-        public IActionResult CheckLogin([FromBody] Account model)
+        public async Task<IActionResult> CheckLogin(Account value)
         {
+            string url = "https://localhost:44348/checkAccountLogin";
             try
             {
-                if (model.Username == "admin" && model.Password == "password")
+                string stringValue = JsonConvert.SerializeObject(value);
+                ResponseData responseData = await _callApi.PostApi(url, stringValue);
+                if (responseData.Success)
                 {
-                    HttpContext.Session.SetString("username", model.Username);
-                    return Ok(new { success = true, message = "Đăng nhập thành công" });
+                    ResponseData resultData = JsonConvert.DeserializeObject<ResponseData>(responseData.ResultData);
+                    if (resultData.Message.Equals("Success"))
+                    {
+                        TempData["Account"] = stringValue;
+                        if (responseData.ResultData.Equals("Admin"))
+                        {
+                            return RedirectToAction("Home", "HomeAdmin", new {area = "Admin"});
+                        }
+                        return RedirectToAction("Home", "HomeUser", new {area = "Users"});
+                    }
+                    return RedirectToAction("Login", new { status = 1, username = value.Username, password = value.Password });
                 }
-                else
-                {
-                    return Ok(new { success = false, message = "Tên người dùng hoặc mật khẩu không đúng" });
-                }
+                return RedirectToAction("Login", new { status = 2, username = value.Username, password = value.Password });
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
-                return BadRequest(new { success = false, message = "Không thể kết nối với Server" });
+                return RedirectToAction("Login", new { status = 2, username = value.Username, password = value.Password });
             }
         }
 

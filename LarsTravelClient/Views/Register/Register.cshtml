@@ -12,19 +12,22 @@
                 LARS TRAVEL
             </div>
             <div class="col-12 col-sm-12 col-md-12 text-info" style="padding-top: 30px; padding-left: 50px;">REGISTER</div>
-            <form action="" class="col-10 col-sm-10 col-md-10" style="padding-left: 50px; ">
+            <form asp-controller="Register" asp-action="RegisterForm" method="post" class="col-10 col-sm-10 col-md-10" style="padding-left: 50px; ">
+                @Html.AntiForgeryToken()
                 <div class="" style="padding-top: 20px;">
-                    <input type="text" class="col-12 col-sm-12 col-md-12 rounded border-info" style="height:60px;" id="email" placeholder="NHẬP TÀI KHOẢN EMAIL">
+                    <input type="email" class="col-12 col-sm-12 col-md-12 rounded border-info" style="height:60px;" name="username" id="username" placeholder="NHẬP TÀI KHOẢN EMAIL" value="@ViewData["Username"]">
                 </div>
                 <div class="" style="padding-top: 10px;">
-                    <input type="password" class="col-12 col-sm-12 col-md-12 rounded border-info" style="height:60px;" id="password" placeholder="NHẬP MẬT KHẨU">
+                    <input type="password" class="col-12 col-sm-12 col-md-12 rounded border-info" style="height:60px;" name="password" id="password" placeholder="NHẬP MẬT KHẨU" value="@ViewData["Password"]">
                 </div>
                 <div class="" style="padding-top: 10px;">
                     <input type="checkbox" id="checkboxShow">
                     <label for="">Show Password</label>
+                    <div id="Message"></div>
                 </div>
-                <button class="col-12 col-sm-12 col-md-12 rounded border-info btn-info shadow-sm" style="height:60px; margin-top: 20px;" type="submit" onclick="ValidateFeild()">ĐĂNG KÝ</button>
+                <button class="col-12 col-sm-12 col-md-12 rounded border-info btn-info shadow-sm" style="height:60px; margin-top: 20px;" type="submit" >ĐĂNG KÝ</button>
             </form>
+            <input type="text" id="Status" value="@ViewData["Status"]" hidden/>
         </div>
         <div class="col-8 col-sm-8 col-md-8">
             <div id="mycarousel" class="carousel slide carousel-fade row rounded" data-ride="carousel">
@@ -63,6 +66,14 @@
 </body>
 <script>
     debugger
+    $(document).ready(function () {
+        var messageValue = $("#Status").val();
+        if (messageValue == 1) {
+            $("#Message").addClass("text-danger").html("Email đã được sử dụng. Hãy nhập email khác.");
+        } else if (messageValue == 2) {
+            $("#Message").addClass("text-danger").html("Lỗi trong quá trình xử lý Server.");
+        }
+    });
     $("#checkboxShow").change(function () {
         if ($(this).is(":checked")) {
             $("#password").attr("type", "text");
@@ -70,28 +81,6 @@
             $("#password").attr("type", "password");
         }
     });
-    async function ValidateFeild(){
-        var email = $('#email').val();
-        var password = $('#password').val();
-        if (!ValidateEmail(email)) return false;
-        var data = {
-            username: email,
-            password: password
-        }
-        $.ajax({
-            url: "https://localhost:44367/Register/RegisterForm",
-            method: "POST",
-            data: JSON.stringify(data),
-            contentType: "application/json",
-            success: function (response) {
-                alert("Success");
-                //window.location.href = "https://localhost:44367/Register/RegisterInfo";
-            },
-            error: function (error) {
-                alert("Faild");
-            }
-        });
-    }
     function ValidateEmail(value){
         const pattern = /[^\x00-\x7F]/g;
         if (pattern.test(value)) {

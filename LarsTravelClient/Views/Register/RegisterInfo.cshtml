@@ -13,21 +13,21 @@
                          style="font-size: 20px; margin-bottom: 100px;">
                         LARS TRAVEL
                     </div>
-                    <form asp-controller="Register" asp-action="SaveRegister" class="col-12 col-sm-12 col-md-12" onsubmit="SaveRegister()">
+                    <form asp-controller="Register" asp-action="SaveRegister" class="col-12 col-sm-12 col-md-12">
                         <div class="row">
                             <div class="col-6 col-sm-6 col-md-6">
                                 <label for="" class="font-italic text-info col-12">Họ và tên</label>
-                                <input type="text" class="rounded border-info text-info col-12" id="Name" style="height:60px;">
+                                <input type="text" class="rounded border-info text-info col-12" name="Name" id="Name" style="height:60px;" required>
                             </div>
                             <div class="col-6 col-sm-6 col-md-6">
                                 <label for="" class="font-italic text-info col-12">Ngày sinh</label>
-                                <input type="datetime-local" class="rounded border-info text-info col-12" id="DateOfBirth" style="height:60px;">
+                                <input type="datetime-local" class="rounded border-info text-info col-12" name="DateOfBirth" id="DateOfBirth" style="height:60px;" required>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-6 col-sm-6 col-md-6">
                                 <label for="" class="font-italic text-info col-12">Giới tính</label>
-                                <select name="" id="Sex" class="rounded border-info text-info col-12" style="height:60px;">
+                                <select name="Sex" id="Sex" class="rounded border-info text-info col-12" style="height:60px;">
                                     <option value="Nam">Nam</option>
                                     <option value="Nữ">Nữ</option>
                                     <option value="Khác">Khác</option>
@@ -35,17 +35,27 @@
                             </div>
                             <div class="col-6 col-sm-6 col-md-6">
                                 <label for="" class="font-italic text-info col-12">Email</label>
-                                <input type="text" id="Email" class="rounded border-info text-info col-12" style="height:60px;" value="@ViewData["RegisterEmail"]" disabled>
+                                <input type="text" name="Email" id="Email" class="rounded border-info text-info col-12" style="height:60px;" value="@ViewData["AccountEmail"]" readonly>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-6 col-sm-6 col-md-6">
                                 <label for="" class="font-italic text-info col-12">Số điện thoại</label>
-                                <input type="text" id="PhoneNumber" class="rounded border-info text-info col-12" style="height:60px;">
+                                <input type="text" name="PhoneNumber" id="PhoneNumber" class="rounded border-info text-info col-12" style="height:60px;" required>
                             </div>
                             <div class="col-6 col-sm-6 col-md-6">
                                 <label for="" class="font-italic text-info col-12">Địa chỉ</label>
-                                <input type="text" id="Address" class="rounded border-info text-info col-12" style="height:60px;">
+                                <input type="text" name="Address" id="Address" class="rounded border-info text-info col-12" style="height:60px;" required>
+                            </div>
+                        </div>
+                        <div class="row" hidden>
+                            <div class="col-6 col-sm-6 col-md-6">
+                                <label for="" class="font-italic text-info col-12">Số điện thoại</label>
+                                <input type="text" name="Username" id="Username" class="rounded border-info text-info col-12" value="@ViewData["AccountEmail"]" style="height:60px;">
+                            </div>
+                            <div class="col-6 col-sm-6 col-md-6">
+                                <label for="" class="font-italic text-info col-12">Địa chỉ</label>
+                                <input type="password" name="Password" id="Password" class="rounded border-info text-info col-12" value="@ViewData["AccountPassword"]" style="height:60px;">
                             </div>
                         </div>
                         <div class="row" style="margin-top: 40px;">
@@ -62,19 +72,21 @@
     </div>
 </body>
 <script>
-    debugger
-    function SaveRegister(){
-        if (ValidateRequired($("#Name").val())) return false;
-        if (ValidateRequired($("#Sex").val())) return false;
-        if (ValidateRequired($("#Email").val())) return false;
-        if (ValidateRequired($("#DateOfBirth").val())) return false;
-        if (ValidateRequired($("#PhoneNumber").val())) return false;
-        if (ValidateRequired($("#Address").val())) return false;
-        return true;
-    }
-    function ValidateRequired(value){
-        if(value == null){
-            alert("Yêu cầu nhập đầy đủ thông tin");
-        }
-    }
+    //debugger
+    //function SaveRegister() {
+    //    if (!ValidateRequired($("#Name").val())) return false;
+    //    if (!ValidateRequired($("#Sex").val())) return false;
+    //    if (!ValidateRequired($("#Email").val())) return false;
+    //    if (!ValidateRequired($("#DateOfBirth").val())) return false;
+    //    if (!ValidateRequired($("#PhoneNumber").val())) return false;
+    //    if (!ValidateRequired($("#Address").val())) return false;
+    //    return true;
+    //}
+    //function ValidateRequired(value) {
+    //    if(value == null || valuev===""){
+    //        alert("Yêu cầu nhập đầy đủ thông tin");
+    //        return false;
+    //    }
+    //    return true;
+    //}
 </script>
