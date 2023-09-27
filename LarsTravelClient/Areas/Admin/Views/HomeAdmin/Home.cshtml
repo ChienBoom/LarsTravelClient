@@ -1,4 +1,6 @@
-﻿@{
+﻿@using LarsTravel.Models;
+
+@{
     ViewData["Title"] = "";
 }
 
@@ -10,21 +12,16 @@
                 LARS TRAVEL
             </div>
             <div class="col-12 col-sm-12 col-md-12 text-info" style="padding-top: 30px; padding-left: 50px;">SEARCH</div>
-            @*<div class="col-8 col-sm-8 col-md-8 text-info" style="padding-top: 20px; padding-left: 50px;">
-                Find your next holiday on 72
-                cool packages!
-            </div>*@
             <div class="col-10 col-sm-10 col-md-10" style="padding-left: 50px; padding-top: 20px;">
-                <form action="">
-                    <label for="searchSelect" class="text-info text-center font-italic">Nhập tên Tour muốn đến</label>
-                    <select id="searchSelect" class="col-12 col-sm-12 col-md-12 rounded border-info" style="height:60px;" multiple>
-                        <option>Lựa chọn 1</option>
-                        <option>Lựa chọn 2</option>
-                        <option>Lựa chọn 3</option>
-                        <option>Lựa chọn 4</option>
-                        <option>Lựa chọn 5</option>
-                        <option>Lựa chọn 6</option>
-                        <option>Lựa chọn 17</option>
+                <form asp-area="Admin" asp-controller="CityAdmin" asp-action="SearchCity" method="post">
+                    <label for="searchCitySelect" class="text-info text-center font-italic">Nhập tên Thành phố muốn đến</label>
+                    <select name="searchCitySelect" id="searchCitySelect" class="col-12 col-sm-12 col-md-12 rounded border-info" style="height:60px;">
+                        @{
+                            foreach (City city in (List<City>)ViewData["Cities"])
+                            {
+                                <option value="@city.Name">@city.Name</option>
+                            }
+                        }
                     </select>
                     <button class="btn btn-info col-12 col-sm-12 col-md-12 rounded border-info" style="height:40px; margin-top: 10px;">Tìm kiếm</button>
                 </form>
@@ -34,15 +31,14 @@
             </div>
             <div class="col-10 col-sm-10 col-md-10" style="padding-left: 50px; padding-top: 10px;">
                 <form action="">
-                    <label for="searchSelect1" class="text-info text-center font-italic">Nhập tên Thành phố muốn đến</label>
-                    <select id="searchSelect1" class="col-12 col-sm-12 col-md-12 rounded border-info" style="height:60px;" multiple>
-                        <option>Lựa chọn 1</option>
-                        <option>Lựa chọn 2</option>
-                        <option>Lựa chọn 3</option>
-                        <option>Lựa chọn 4</option>
-                        <option>Lựa chọn 5</option>
-                        <option>Lựa chọn 6</option>
-                        <option>Lựa chọn 17</option>
+                    <label for="searchTourSelect" class="text-info text-center font-italic">Nhập tên Tour muốn đến</label>
+                    <select name="searchTourSelect" id="searchTourSelect" class="col-12 col-sm-12 col-md-12 rounded border-info" style="height:60px;">
+                        @{
+                            foreach (Tour tour in (List<Tour>)ViewData["Tours"])
+                            {
+                                <option value="@tour.Name">@tour.Name</option>
+                            }
+                        }
                     </select>
                     <button class="btn btn-info col-12 col-sm-12 col-md-12 rounded border-info" style="height:40px; margin-top: 10px;">Tìm kiếm</button>
                 </form>
@@ -98,7 +94,7 @@
                 <div class="card-deck">
                     <div class="card col-4 col-sm-4 col-md-4 text-info">
                         <img class="card-img" style="width: 80%; height: 60%; margin-left: 10%;"
-                             src="https://vapa.vn/wp-content/uploads/2022/12/anh-3d-thien-nhien-010.jpg" alt="">
+                             src="~/UploadImage/hagiangcity.jpg" alt="">
                         <div class="card-body">
                             <h5 class="card-subtitle">Ảnh 4K - Đây là sử dụng tiêu đề phụ</h5>
                             <p class="card-text">Đây là phần nội dung của Card - Thiết lập màu chữ cho card</p>
@@ -107,7 +103,7 @@
                     </div>
                     <div class="card col-4 col-sm-4 col-md-4 text-info">
                         <img class="card-img" style="width: 80%; height: 60%; margin-left: 10%;"
-                             src="https://vapa.vn/wp-content/uploads/2022/12/anh-3d-thien-nhien-010.jpg" alt="">
+                             src="~/UploadImage/haiphongcity.jpg" alt="">
                         <div class="card-body">
                             <h5 class="card-subtitle">Ảnh 4K - Đây là sử dụng tiêu đề phụ</h5>
                             <p class="card-text">Đây là phần nội dung của Card - Thiết lập màu chữ cho card</p>
@@ -116,7 +112,7 @@
                     </div>
                     <div class="card col-4 col-sm-4 col-md-4 text-info">
                         <img class="card-img" style="width: 80%; height: 60%; margin-left: 10%;"
-                             src="https://vapa.vn/wp-content/uploads/2022/12/anh-3d-thien-nhien-010.jpg" alt="">
+                             src="~/UploadImage/hanoicity.jpg" alt="">
                         <div class="card-body">
                             <h5 class="card-subtitle">Ảnh 4K - Đây là sử dụng tiêu đề phụ</h5>
                             <p class="card-text">Đây là phần nội dung của Card - Thiết lập màu chữ cho card</p>
@@ -151,16 +147,16 @@
             <div class="row">
                 <div class="col-1 col-sm-1 col-md-1"></div>
                 <div class="media col-5 col-sm-5 col-md-5 border" style="margin-left: 10px; margin-right: 10px;">
-                    <img class="mr-3 rounded order-0 col-6 col-sm-6 col-md-6"
-                         src="https://vapa.vn/wp-content/uploads/2022/12/anh-3d-thien-nhien-010.jpg">
+                    <img class="mr-3 rounded order-0 col-6 col-sm-6 col-md-6" style="width: 100%; height: 100%;"
+                         src="~/UploadImage/ngheancity.jpg">
                     <div class="media-body col-4 col-sm-4 col-md-4">
                         <h5 class="mt-0 text-info font-italic">NHA TRANG</h5>
                     </div>
                 </div>
 
                 <div class="media col-5 col-sm-5 col-md-5 border" style="margin-left: 10px; margin-right: 10px;">
-                    <img class="mr-3 rounded order-0 col-6 col-sm-6 col-md-6"
-                         src="https://vapa.vn/wp-content/uploads/2022/12/anh-3d-thien-nhien-010.jpg">
+                    <img class="mr-3 rounded order-0 col-6 col-sm-6 col-md-6" style="width: 100%; height: 100%;"
+                         src="~/UploadImage/nhatrangcity.jpg">
                     <div class="media-body col-4 col-sm-4 col-md-4">
                         <h5 class="mt-0 text-info font-italic">ĐÀ NẴNG</h5>
                     </div>
@@ -169,16 +165,16 @@
             <div class="row" style="margin-top: 20px;">
                 <div class="col-1 col-sm-1 col-md-1"></div>
                 <div class="media col-5 col-sm-5 col-md-5 border" style="margin-left: 10px; margin-right: 10px;">
-                    <img class="mr-3 rounded order-0 col-6 col-sm-6 col-md-6"
-                         src="https://vapa.vn/wp-content/uploads/2022/12/anh-3d-thien-nhien-010.jpg">
+                    <img class="mr-3 rounded order-0 col-6 col-sm-6 col-md-6" style="width: 100%; height: 100%;"
+                         src="~/UploadImage/quangninhcity.jpg">
                     <div class="media-body col-4 col-sm-4 col-md-4">
                         <h5 class="mt-0 text-info font-italic">HÀ NỘI</h5>
                     </div>
                 </div>
 
                 <div class="media col-5 col-sm-5 col-md-5 border" style="margin-left: 10px; margin-right: 10px;">
-                    <img class="mr-3 rounded order-0 col-6 col-sm-6 col-md-6"
-                         src="https://vapa.vn/wp-content/uploads/2022/12/anh-3d-thien-nhien-010.jpg">
+                    <img class="mr-3 rounded order-0 col-6 col-sm-6 col-md-6" style="width: 100%; height: 100%;"
+                         src="~/UploadImage/quangbinhcity.jpg">
                     <div class="media-body col-4 col-sm-4 col-md-4">
                         <h5 class="mt-0 text-info font-italic">TP. HỒ CHÍ MINH</h5>
                     </div>
@@ -189,14 +185,14 @@
 </body>
 <script>
     $(document).ready(function () {
-        $('#searchSelect').select2({
+        $('#searchCitySelect').select2({
             allowClear: true, // Cho phép xóa lựa chọn hiện tại
             minimumInputLength: 1, // Số ký tự tối thiểu trước khi bắt đầu tìm kiếm
             width: '100%', // Độ rộng của ô tìm kiếm
             theme: 'classic', // Giao diện của Select2 (classic hoặc default)
             // Các tùy chọn khác...
         });
-        $('#searchSelect1').select2({
+        $('#searchTourSelect').select2({
             allowClear: true, // Cho phép xóa lựa chọn hiện tại
             minimumInputLength: 1, // Số ký tự tối thiểu trước khi bắt đầu tìm kiếm
             width: '100%', // Độ rộng của ô tìm kiếm

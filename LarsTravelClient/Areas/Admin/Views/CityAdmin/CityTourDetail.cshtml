@@ -1,8 +1,10 @@
-﻿@*
+﻿@using LarsTravel.Models;
+@*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 @{
     ViewData["Title"] = "Home";
+    City city = (City)ViewData["CityTourDetail"];
 }
 <body>
     <div class="row" style="margin-top: 20px;">
@@ -13,12 +15,10 @@
                     LARS TRAVEL
                 </div>
                 <div class="col-12 col-sm-12 col-md-12 text-info font-italic" style="padding-left: 50px; font-size: 25px;">
-                    THÀNH PHỐ BIỂN NHA TRANG
+                    @city.Name
                 </div>
                 <div class="col-12 col-sm-12 col-md-12 text-info font-italic" style="padding-left: 50px;">
-                    Nha Trang, thành phố biển tại Việt Nam, nằm ở vùng duyên hải phía nam của đất nước, được biết đến với danh xưng "Riviera của Việt Nam."
-                    Với bãi biển dài cát trắng và nước biển trong xanh,
-                    Nha Trang là một trong những điểm đến du lịch hàng đầu của Việt Nam và thu hút hàng triệu du khách từ khắp nơi trên thế giới hàng năm.
+                    @city.Description
                 </div>
                 <div class="col-12 col-sm-12 col-md-12 font-italic" style="padding-left: 50px; margin-top: 20px;">
                     Nha Trang không chỉ nổi tiếng với cảnh biển tuyệt đẹp mà còn với nền văn hóa lịch sử và ẩm thực phong phú.

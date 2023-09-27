@@ -25,6 +25,11 @@ namespace LarsTravelClient.Controllers
             return View();
         }
 
+        public IActionResult ForgotPassword()
+        {
+            return View();
+        }
+
         [HttpPost]
         public async Task<IActionResult> CheckLogin(Account value)
         {
@@ -41,7 +46,7 @@ namespace LarsTravelClient.Controllers
                         TempData["Account"] = stringValue;
                         if (resultData.ResultData.Equals("Admin"))
                         {
-                            return RedirectToAction("HomeAdmin", "HomeAdmin", new {area = "Admin"});
+                            return RedirectToAction("Home", "HomeAdmin", new {area = "Admin"});
                         }
                         return RedirectToAction("Home", "HomeUser", new {area = "Users"});
                     }
@@ -52,6 +57,27 @@ namespace LarsTravelClient.Controllers
             catch (Exception ex)
             {
                 return RedirectToAction("Login", new { status = 2, username = value.Username, password = value.Password });
+            }
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> RecoverPassword(Account value)
+        {
+            string url = "https://localhost:44348/api/SendEmail/RecoverPassword";
+            try
+            {
+                value.Password = "ForgotPassword";
+                string stringValue = JsonConvert.SerializeObject(value);
+                ResponseData responseData = await _callApi.PostApi(url, stringValue);
+                if (responseData.Success)
+                {
+                    return RedirectToAction("Login", new { status = 0, username = "", password = "" });
+                }
+                return RedirectToAction("Login", new { status = 2, username = "", password = "" });
+            }
+            catch (Exception ex)
+            {
+                return RedirectToAction("Login", new { status = 2, username = "", password = "" });
             }
         }
 
